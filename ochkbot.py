@@ -10,6 +10,16 @@ bot = telebot.TeleBot("MAH_TOKEN")
 def send_welcome(message):
 	bot.send_message(message.chat.id, "Дратути! \nЭтот бот создан для обратной связи с каналом Очко Баяна - https://t.me/ochkobayanachannel \nВы таки хочете нам шо-то сказать? \nПошлите нам что угодно - картинку, видосик, ссылочку, стикер - даже просто пожелания, и возможно мы их опубликуем!\n*ноэтонеточно*")
 
+	
+###handler for affirmative response
+
+yopta = ['ДА', 'ДАА', 'ДААА', 'YES', 'АГА', 'ЫЫЫ', 'Ы', 'DA', 'DAA', 'DAAA']
+
+@bot.message_handler(func=lambda m: True)
+def affirm_resp (message):
+        if message.text.upper() in yopta:
+                bot.reply_to(message, 'Спасибо, ёпта :3')
+
 
 ###simple about_us info
 @bot.message_handler(commands=['about', 'wassup'])
